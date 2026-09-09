@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import PlaceholderImage from '../components/PlaceholderImage.astro';
+import { whatsappMessages } from '../data/config';
+import { particulares, formatEuros } from '../data/precios';
+
+const filas = [
+  { participantes: '1 persona', suelta: particulares.porPersonaHora.suelta[1], bono: particulares.porPersonaHora.bono[1], bono4h: particulares.bono4h[1] },
+  { participantes: '2 personas', suelta: particulares.porPersonaHora.suelta[2], bono: particulares.porPersonaHora.bono[2], bono4h: particulares.bono4h[2] },
+  { participantes: '3 personas', suelta: particulares.porPersonaHora.suelta[3], bono: particulares.porPersonaHora.bono[3], bono4h: particulares.bono4h[3] },
+];
+
+const duraciones = [
+  { participantes: 'Individual', h1: particulares.sesionSuelta['1h'][1], h15: particulares.sesionSuelta['1.5h'][1], h2: particulares.sesionSuelta['2h'][1] },
+  { participantes: '2 personas', h1: particulares.sesionSuelta['1h'][2], h15: particulares.sesionSuelta['1.5h'][2], h2: particulares.sesionSuelta['2h'][2] },
+  { participantes: '3 personas', h1: particulares.sesionSuelta['1h'][3], h15: particulares.sesionSuelta['1.5h'][3], h2: particulares.sesionSuelta['2h'][3] },
+];
+---
+
+<BaseLayout
+  title="Clases particulares de escalada en Valencia"
+  description="Clases particulares de escalada en Valencia: individual, en pareja o en trío. Tarifas por sesión suelta o bono de 4 horas, duración flexible."
+  path="/particulares"
+>
+  <section class="hero" style="padding-bottom:2rem;">
+    <div class="container">
+      <span class="eyebrow">Clases particulares</span>
+      <h1 style="font-size:clamp(2rem,4.5vw,3rem); max-width:22ch; margin-bottom:1.1rem;">
+        Atención individual: solo, en pareja o en trío
+      </h1>
+      <p class="lead">
+        Sesiones de escalada para 1, 2 o 3 personas con horario y contenido flexibles. Ideales
+        cuando buscas atención totalmente personalizada, trabajar una dificultad técnica concreta
+        o entrenar con tu pareja o un par de amigos a tu ritmo.
+      </p>
+      <div class="hero__actions">
+        <WhatsAppButton message={whatsappMessages.particulares} label="Consultar disponibilidad" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Tarifas por persona y hora</span>
+        <h2>Sesión suelta o bono de 4 horas</h2>
+        <p>
+          Todos los importes son por persona. El bono da derecho a 4 horas de entrenamiento por
+          participante, con un descuento de {formatEuros(particulares.descuentoBonoPorHora)} por
+          persona y hora respecto a la sesión suelta.
+        </p>
+      </div>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Participantes</th>
+              <th>Sesión suelta €/persona/h</th>
+              <th>Bono €/persona/h</th>
+              <th>Bono 4h €/persona</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              filas.map((f) => (
+                <tr>
+                  <td>{f.participantes}</td>
+                  <td class="price">{formatEuros(f.suelta)}</td>
+                  <td class="price">{formatEuros(f.bono)}</td>
+                  <td class="price">{formatEuros(f.bono4h)}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="note" style="margin-top:1rem;">
+        Bono completo de grupo: pareja {formatEuros(particulares.bonoCompletoGrupo.pareja)}, trío{' '}
+        {formatEuros(particulares.bonoCompletoGrupo.trio)}.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Duración flexible</span>
+        <h2>Precio total según duración de la sesión</h2>
+        <p>
+          Puedes solicitar sesiones de 1 hora, 1 hora y media, 2 horas u otra duración, según
+          disponibilidad y acuerdo previo. El importe es la tarifa por persona y hora
+          multiplicada por la duración, y el total del grupo es ese importe por el número de
+          participantes.
+        </p>
+      </div>
+
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Sesión suelta</th>
+              <th>1 h</th>
+              <th>1,5 h</th>
+              <th>2 h</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              duraciones.map((d) => (
+                <tr>
+                  <td>{d.participantes}</td>
+                  <td class="price">{formatEuros(d.h1)}</td>
+                  <td class="price">{formatEuros(d.h15)}</td>
+                  <td class="price">{formatEuros(d.h2)}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+      <p class="note" style="margin-top:1rem; max-width:70ch;">
+        Con bono, una sesión de 1,5 h consume 1,5 h del saldo de cada participante (valor
+        proporcional: {formatEuros(34.5)} individual, {formatEuros(25.5)} en pareja y{' '}
+        {formatEuros(19.5)} en trío), no es una tarifa de sesión suelta distinta.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="hero__grid" style="align-items:center;">
+        <div>
+          <span class="eyebrow">¿Cuándo elegir una particular?</span>
+          <h2 style="font-size:clamp(1.5rem,3vw,2.1rem); margin-bottom:1rem;">
+            Más apropiada que una clase grupal cuando…
+          </h2>
+          <ul class="price-card__features" style="gap:0.8rem;">
+            <li>Quieres atención 100% individual durante toda la sesión.</li>
+            <li>Buscas trabajar una dificultad técnica concreta.</li>
+            <li>Prefieres elegir horario a medida en lugar de un grupo fijo.</li>
+            <li>Quieres entrenar en pareja o con dos amigos más, a vuestro ritmo.</li>
+          </ul>
+        </div>
+        <PlaceholderImage label="Foto: clase particular, entrenador con un alumno en pared" ratio="4 / 3" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-narrow text-center">
+      <h2 style="font-size:clamp(1.5rem,3vw,2rem); margin-bottom:1rem;">
+        Cuéntame qué buscas y te propongo horario
+      </h2>
+      <p style="color:var(--color-ink-soft); margin-bottom:1.5rem;">
+        La duración exacta y la disponibilidad se acuerdan directamente por WhatsApp.
+      </p>
+      <WhatsAppButton message={whatsappMessages.particulares} label="Consultar por WhatsApp" />
+    </div>
+  </section>
+</BaseLayout>

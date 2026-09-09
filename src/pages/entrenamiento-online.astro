@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import PriceCard from '../components/PriceCard.astro';
+import PlaceholderImage from '../components/PlaceholderImage.astro';
+import { whatsappMessages, site } from '../data/config';
+import { entrenamientoOnline } from '../data/precios';
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Entrenamiento personalizado online de fuerza y escalada',
+    provider: { '@type': 'Organization', name: site.brandName },
+    areaServed: 'Online',
+    offers: [
+      { '@type': 'Offer', name: 'Fuerza y movilidad', price: entrenamientoOnline.fuerza.precioMes, priceCurrency: 'EUR' },
+      { '@type': 'Offer', name: 'Escalada', price: entrenamientoOnline.escalada.precioMes, priceCurrency: 'EUR' },
+      { '@type': 'Offer', name: 'Fuerza + escalada', price: entrenamientoOnline.pack.precioMes, priceCurrency: 'EUR' },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Entrenamiento online de fuerza y escalada"
+  description="Entrenamiento online personalizado de fuerza, movilidad y escalada, con planificación individual y seguimiento en TrainingPeaks. Entrena donde quieras."
+  path="/entrenamiento-online"
+  structuredData={structuredData}
+>
+  <section class="hero" style="padding-bottom:2rem;">
+    <div class="container">
+      <span class="eyebrow">Entrenamiento online</span>
+      <h1 style="font-size:clamp(2rem,4.5vw,3.1rem); max-width:22ch; margin-bottom:1.1rem;">
+        Un plan personalizado de fuerza y escalada, entrenes donde entrenes
+      </h1>
+      <p class="lead">
+        No hace falta acudir a las clases grupales ni entrenar en Vuit Climbing Club: puedes
+        contratar el entrenamiento online desde otro rocódromo, un gimnasio o cualquier ciudad.
+        La programación se adapta a tu nivel, objetivos, disponibilidad semanal, material
+        disponible y lugar de entrenamiento.
+      </p>
+      <div class="hero__actions">
+        <WhatsAppButton message={whatsappMessages.entrenamientoOnline} label="Empezar a entrenar online" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Elige tu plan</span>
+        <h2>Fuerza, escalada o ambas</h2>
+        <p>La planificación se organiza en bloques de trabajo de aproximadamente 4 semanas y se factura como precio mensual.</p>
+      </div>
+
+      <div class="grid grid-3">
+        <PriceCard
+          title={entrenamientoOnline.fuerza.nombre}
+          price={entrenamientoOnline.fuerza.precioMes}
+          description="Para mejorar fuerza, rendimiento físico y movilidad."
+          features={[
+            'Fuerza de tren superior y tren inferior',
+            'Sesiones full body',
+            'Potencia y pliometría',
+            'Movilidad y preparación física complementaria',
+            'Gestión de volumen, intensidad y progresiones',
+            'Habitualmente entre 2 y 4 días por semana',
+          ]}
+          ctaMessage={whatsappMessages.entrenamientoFuerza}
+          ctaLabel="Quiero este plan"
+        />
+        <PriceCard
+          title={entrenamientoOnline.pack.nombre}
+          price={entrenamientoOnline.pack.precioMes}
+          description="Planificación coordinada de fuerza y escalada."
+          featured
+          features={[
+            'Integra sesiones de fuerza y de escalada',
+            'Organiza volumen, intensidad, fatiga y recuperación',
+            'Pensado para quien quiere mejorar ambas a la vez',
+            'Una única planificación global en TrainingPeaks',
+          ]}
+          ctaMessage={whatsappMessages.entrenamientoPack}
+          ctaLabel="Quiero el pack completo"
+        />
+        <PriceCard
+          title={entrenamientoOnline.escalada.nombre}
+          price={entrenamientoOnline.escalada.precioMes}
+          description="Para mejorar específicamente tu rendimiento en escalada."
+          features={[
+            'Boulder, resistencia y continuidad',
+            'Potencia y fuerza específica para escalada',
+            'Suspensiones y trabajo de dedos cuando proceda',
+            'Dominadas y preparación física complementaria',
+            'Campus board solo cuando el nivel lo permita',
+            'Movilidad y organización de las sesiones',
+          ]}
+          ctaMessage={whatsappMessages.entrenamientoEscalada}
+          ctaLabel="Quiero este plan"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="hero__grid" style="align-items:center;">
+        <div>
+          <span class="eyebrow">Cómo funciona el seguimiento</span>
+          <h2 style="font-size:clamp(1.6rem,3.2vw,2.3rem); margin-bottom:1rem;">
+            Planificación y seguimiento en TrainingPeaks
+          </h2>
+          <p style="color:var(--color-ink-soft); margin-bottom:1.25rem; max-width:56ch;">
+            TrainingPeaks es la plataforma que se usa para planificar, organizar y hacer
+            seguimiento de tu entrenamiento. Cada sesión incluye ejercicios, series,
+            repeticiones, descansos e indicaciones técnicas.
+          </p>
+          <ol class="price-card__features" style="gap:0.9rem;">
+            <li>Onboarding inicial para recoger tu información y objetivos.</li>
+            <li>Recibes acceso a TrainingPeaks por email y creas tu contraseña.</li>
+            <li>Consultas tu calendario y las sesiones programadas desde la app.</li>
+            <li>Registras pesos, repeticiones, RPE y sensaciones tras cada sesión.</li>
+            <li>Los comentarios de cada sesión son el canal para dudas y ajustes.</li>
+          </ol>
+          <p class="note" style="margin-top:1.25rem;">
+            Tiempo de respuesta habitual: 24-48 horas laborables. Lo que no se registra no puede
+            analizarse con la misma calidad, así que cuanto más completo sea tu registro, mejor
+            se puede ajustar la planificación.
+          </p>
+        </div>
+        <PlaceholderImage label="Captura o foto: seguimiento en TrainingPeaks" ratio="4 / 3" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container-narrow">
+      <div class="card">
+        <h2 style="font-size:1.3rem; margin-bottom:0.75rem;">Sin promesas de resultados</h2>
+        <p style="color:var(--color-ink-soft);">
+          La programación es individualizada y se ajusta con tu progreso real, pero ningún
+          entrenamiento puede garantizar un resultado concreto: depende de tu punto de partida,
+          tu constancia, tu recuperación y otros factores fuera de la planificación. No hay
+          permanencia: para cancelar basta con avisar antes de la renovación correspondiente.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-narrow text-center">
+      <h2 style="font-size:clamp(1.5rem,3vw,2rem); margin-bottom:1rem;">
+        ¿No sabes qué plan encaja contigo?
+      </h2>
+      <p style="color:var(--color-ink-soft); margin-bottom:1.5rem;">
+        Cuéntame qué quieres mejorar, cuántos días puedes entrenar y dónde sueles hacerlo, y te
+        oriento hacia el plan adecuado.
+      </p>
+      <WhatsAppButton message={whatsappMessages.entrenamientoOnline} label="Consultar por WhatsApp" />
+    </div>
+  </section>
+</BaseLayout>

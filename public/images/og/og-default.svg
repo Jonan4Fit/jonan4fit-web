@@ -1,0 +1,23 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#211c16" />
+      <stop offset="100%" stop-color="#1c1917" />
+    </linearGradient>
+    <linearGradient id="accentGlow" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#b4502c" stop-opacity="0.55" />
+      <stop offset="100%" stop-color="#b4502c" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect width="1200" height="630" fill="url(#accentGlow)" />
+  <g stroke="#3a332a" stroke-width="1.5" opacity="0.6">
+    <path d="M-50 520 L260 300 L520 480 L780 260 L1050 460 L1300 240" fill="none" />
+    <path d="M-50 600 L300 380 L560 560 L820 340 L1100 540 L1300 320" fill="none" />
+  </g>
+  <rect x="80" y="80" width="56" height="56" rx="14" fill="#f5f0e8" />
+  <text x="98" y="119" font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="24" font-weight="800" fill="#1c1917">J</text>
+  <text x="80" y="330" font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="64" font-weight="800" fill="#f5f0e8">Jonan4Fit</text>
+  <text x="80" y="400" font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="34" font-weight="600" fill="#e0733f">Escalada y entrenamiento personalizado</text>
+  <text x="80" y="460" font-family="-apple-system,Helvetica,Arial,sans-serif" font-size="24" font-weight="500" fill="#c9c1b5">Valencia · Clases presenciales · Online</text>
+</svg>

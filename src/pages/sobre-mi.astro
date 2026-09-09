@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import PlaceholderImage from '../components/PlaceholderImage.astro';
+import { whatsappMessages, location } from '../data/config';
+---
+
+<BaseLayout
+  title="Sobre mí — Jonan, entrenador de escalada y fuerza"
+  description="Conoce a Jonan, entrenador de escalada y preparación física en Vuit Climbing Club, Valencia, con entrenamiento online personalizado."
+  path="/sobre-mi"
+>
+  <section class="hero">
+    <div class="container hero__grid">
+      <div>
+        <span class="eyebrow">Sobre mí</span>
+        <h1 style="font-size:clamp(2rem,4.5vw,3rem); margin-bottom:1.1rem;">Hola, soy Jonan</h1>
+        <p class="lead">
+          [PLACEHOLDER — Jonan: completa aquí tu presentación personal: cómo empezaste a escalar
+          y a entrenar, qué te motiva a enseñar, y qué tipo de alumno o deportista disfrutas
+          más entrenando. 2-3 frases cercanas y honestas, sin tecnicismos.]
+        </p>
+        <div class="hero__actions">
+          <WhatsAppButton message={whatsappMessages.generico} label="Hablar conmigo por WhatsApp" />
+        </div>
+      </div>
+      <PlaceholderImage label="Foto: retrato profesional de Jonan" ratio="4 / 5" />
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container-narrow">
+      <div class="section-head">
+        <span class="eyebrow">Formación y trayectoria</span>
+        <h2>[PLACEHOLDER — título de esta sección]</h2>
+      </div>
+      <div class="card">
+        <p style="color:var(--color-ink-soft);">
+          [PLACEHOLDER — añade aquí tu formación, titulaciones o cursos realizados, y tu
+          trayectoria como escalador y entrenador. No se ha incluido ningún dato aquí porque no
+          figuraba en la documentación de base: complétalo tú mismo con la información exacta
+          que quieras mostrar públicamente.]
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Cómo trabajo</span>
+        <h2>Presencial y online, con seguimiento real</h2>
+      </div>
+      <div class="grid grid-2">
+        <div class="card">
+          <h3 style="font-size:1.05rem; margin-bottom:0.6rem;">En {location.businessName}</h3>
+          <p style="color:var(--color-ink-soft); font-size:0.95rem;">
+            Imparto las clases presenciales de adultos y niños, combinando técnica, físico y
+            estrategia en cada sesión de grupo.
+          </p>
+        </div>
+        <div class="card">
+          <h3 style="font-size:1.05rem; margin-bottom:0.6rem;">En cualquier lugar, online</h3>
+          <p style="color:var(--color-ink-soft); font-size:0.95rem;">
+            Programo y superviso entrenamientos de fuerza y escalada a través de TrainingPeaks,
+            adaptando cada plan al nivel, material y disponibilidad de cada persona.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container-narrow">
+      <div class="card">
+        <h2 style="font-size:1.15rem; margin-bottom:0.75rem;">Ámbito profesional</h2>
+        <p style="color:var(--color-ink-soft);">
+          Mi trabajo se centra en el entrenamiento, la fuerza, el rendimiento, la movilidad y la
+          preparación física. No ofrezco diagnóstico, tratamiento ni rehabilitación clínica: ante
+          dolor o lesión, la valoración corresponde siempre a un profesional sanitario, aunque
+          puedo adaptar tu entrenamiento dentro de esas indicaciones.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section text-center">
+    <div class="container-narrow">
+      <h2 style="font-size:clamp(1.5rem,3vw,2rem); margin-bottom:1rem;">¿Hablamos?</h2>
+      <WhatsAppButton message={whatsappMessages.generico} label="Escríbeme por WhatsApp" />
+    </div>
+  </section>
+</BaseLayout>

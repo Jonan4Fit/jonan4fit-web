@@ -1,0 +1,39 @@
+---
+import WhatsAppButton from './WhatsAppButton.astro';
+import { formatEuros } from '../data/precios';
+
+interface Props {
+  title: string;
+  price: number;
+  period?: string;
+  description?: string;
+  features: string[];
+  featured?: boolean;
+  ctaMessage: string;
+  ctaLabel?: string;
+}
+
+const {
+  title,
+  price,
+  period = '/mes',
+  description,
+  features,
+  featured = false,
+  ctaMessage,
+  ctaLabel = 'Consultar por WhatsApp',
+} = Astro.props;
+---
+
+<div class:list={['card', 'price-card', { 'price-card--featured': featured }]}>
+  {featured && <span class="badge">Más solicitado</span>}
+  <h3>{title}</h3>
+  {description && <p class="note">{description}</p>}
+  <p class="price-card__amount">
+    {formatEuros(price)}<span> {period}</span>
+  </p>
+  <ul class="price-card__features">
+    {features.map((f) => <li>{f}</li>)}
+  </ul>
+  <WhatsAppButton message={ctaMessage} label={ctaLabel} variant={featured ? 'primary' : 'outline'} class="btn-block" />
+</div>

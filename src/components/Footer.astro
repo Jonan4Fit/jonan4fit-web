@@ -1,0 +1,55 @@
+---
+import { location, mapsUrl, whatsappLink, whatsappMessages, site } from '../data/config';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h3>{site.brandName}</h3>
+        <p style="max-width:38ch; color:var(--color-ink-soft);">
+          {site.brandName} es la marca de entrenamiento y escalada de {site.personName}, entrenador
+          en Valencia. Clases presenciales en {location.businessName} y entrenamiento online
+          personalizado allí donde entrenes.
+        </p>
+      </div>
+
+      <div>
+        <h3>Navegación</h3>
+        <ul>
+          <li><a href="/clases">Clases presenciales</a></li>
+          <li><a href="/particulares">Clases particulares</a></li>
+          <li><a href="/entrenamiento-online">Entrenamiento online</a></li>
+          <li><a href="/nutricion">Nutrición con INDYA</a></li>
+          <li><a href="/faq">Preguntas frecuentes</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Contacto</h3>
+        <ul>
+          <li>
+            <a href={whatsappLink(whatsappMessages.generico)} target="_blank" rel="noopener noreferrer">
+              WhatsApp
+            </a>
+          </li>
+          <li>
+            <a href={mapsUrl} target="_blank" rel="noopener noreferrer">
+              {location.businessName}<br />{location.street}, {location.city}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© {year} {site.brandName}. Todos los derechos reservados.</span>
+      <span class="note">
+        Entrenamiento y preparación física — no sustituye la valoración de un profesional
+        sanitario.
+      </span>
+    </div>
+  </div>
+</footer>

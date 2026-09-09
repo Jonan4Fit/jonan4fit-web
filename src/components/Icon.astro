@@ -1,0 +1,48 @@
+---
+export type IconName =
+  | 'climbing'
+  | 'personal'
+  | 'online'
+  | 'nutrition'
+  | 'check'
+  | 'calendar'
+  | 'location'
+  | 'clock'
+  | 'chart'
+  | 'shield';
+
+interface Props {
+  name: IconName;
+  class?: string;
+}
+
+const { name, class: className = '' } = Astro.props;
+
+const paths: Record<IconName, string> = {
+  climbing:
+    'M4 20 18 4 M18 4 22 20 M9.5 13.5 14.5 13.5 M4 20h18',
+  personal: 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z M5 21a7 7 0 0 1 14 0',
+  online: 'M4 5h16v11H4z M9 20h6 M8 16v4 M16 16v4 M12 8v4 M9 10l3-2 3 2',
+  nutrition: 'M12 3c1.5 2-.5 3.5-.5 5.5A5 5 0 1 0 17 13c0-3-2-4-2-4',
+  check: 'M5 13l4 4L19 7',
+  calendar: 'M4 6h16v14H4z M4 10h16 M8 3v5 M16 3v5',
+  location: 'M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12Z M12 11.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z',
+  clock: 'M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z M12 7v5l3.5 2',
+  chart: 'M4 20V10 M11 20V4 M18 20v-7',
+  shield: 'M12 3l8 3v6c0 5-3.5 7.5-8 9-4.5-1.5-8-4-8-9V6l8-3Z',
+};
+---
+
+<svg
+  class={className}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.8"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  focusable="false"
+>
+  <path d={paths[name]} />
+</svg>

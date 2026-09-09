@@ -1,0 +1,231 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import PlaceholderImage from '../components/PlaceholderImage.astro';
+import { whatsappMessages, location, mapsUrl, site } from '../data/config';
+import { clasesAdultos, clasesInfantiles, formatEuros } from '../data/precios';
+import { horarioAdultos } from '../data/horarios';
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Course',
+    name: 'Clases de escalada para adultos y niños en Valencia',
+    description:
+      'Clases grupales presenciales de escalada impartidas por Jonan, de Jonan4Fit, en Vuit Climbing Club, Valencia, para adultos y para niños.',
+    provider: {
+      '@type': 'Organization',
+      name: site.brandName,
+    },
+    location: {
+      '@type': 'Place',
+      name: location.businessName,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: location.street,
+        postalCode: location.postalCode,
+        addressLocality: location.city,
+        addressRegion: location.region,
+        addressCountry: location.country,
+      },
+    },
+  },
+];
+---
+
+<BaseLayout
+  title="Clases de escalada en Valencia — adultos y niños"
+  description="Clases de escalada para adultos y clases infantiles en Vuit Climbing Club, Valencia. Metodología, horarios, precios e inscripción."
+  path="/clases"
+  structuredData={structuredData}
+>
+  <section class="hero" style="padding-bottom: 2rem;">
+    <div class="container">
+      <span class="eyebrow">Clases presenciales</span>
+      <h1 style="font-size:clamp(2rem,4.5vw,3rem); max-width:20ch; margin-bottom:1.1rem;">
+        Clases de escalada en Valencia para adultos y niños
+      </h1>
+      <p class="lead">
+        Las clases se imparten en {location.businessName} y combinan técnica, físico y
+        estrategia en cada sesión. Se trabaja en grupo, adaptando el nivel de exigencia a las
+        personas que forman el grupo.
+      </p>
+      <div class="hero__actions">
+        <WhatsAppButton message={whatsappMessages.clasesAdultos} label="Preguntar por clases de adultos" />
+        <WhatsAppButton
+          message={whatsappMessages.clasesInfantil}
+          label="Preguntar por clases infantiles"
+          variant="outline"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ADULTOS -->
+  <section class="section section-alt" id="adultos">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Adultos</span>
+        <h2>Clases de escalada para adultos</h2>
+        <p>{clasesAdultos.formato}. Boulder y preparación física orientada a escalada deportiva.</p>
+      </div>
+
+      <div class="grid grid-2" style="align-items:start;">
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Días</th>
+                <th>Horario</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                horarioAdultos.map((h) => (
+                  <tr>
+                    <td>{h.dias}</td>
+                    <td>{h.horario}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Modalidad</th>
+                <th>Precio</th>
+                <th>Incluye</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                clasesAdultos.modalidades.map((m) => (
+                  <tr>
+                    <td>{m.nombre}</td>
+                    <td class="price">{formatEuros(m.precioMes)}/mes</td>
+                    <td>{m.incluye}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="note" style="margin-top:1rem; max-width:70ch;">{clasesAdultos.nota}</p>
+    </div>
+  </section>
+
+  <!-- INFANTIL -->
+  <section class="section" id="infantil">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Infantil</span>
+        <h2>Clases infantiles</h2>
+        <p>Grupo actualmente disponible, sujeto a plazas y nivel.</p>
+      </div>
+
+      <div class="grid grid-3">
+        {
+          clasesInfantiles.grupos.map((g) => (
+            <div class="card">
+              <h3 style="font-size:1.1rem;">{g.edad}</h3>
+              <p class="price-card__amount" style="margin-block:0.5rem;">
+                {formatEuros(g.precioMes)}<span> /mes</span>
+              </p>
+              <p style="color:var(--color-ink-soft); font-size:0.95rem;">
+                {g.dia}, {g.horario} · {g.duracion}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+      <p class="note" style="margin-top:1rem; max-width:70ch;">{clasesInfantiles.nota}</p>
+    </div>
+  </section>
+
+  <!-- METODOLOGÍA -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="hero__grid" style="align-items:center;">
+        <div>
+          <span class="eyebrow">Metodología</span>
+          <h2 style="font-size:clamp(1.5rem,3vw,2.1rem); margin-bottom:1rem;">
+            Qué se trabaja en una sesión habitual
+          </h2>
+          <ul class="price-card__features" style="gap:0.8rem;">
+            <li>Gomas y movilidad.</li>
+            <li>Ejercicios de fuerza y circuito físico general.</li>
+            <li>Calentamiento específico en pared.</li>
+            <li>Trabajo principal, habitualmente alternando resistencia y bloque.</li>
+            <li>Juegos, ejercicios específicos y bloques para practicar técnicas concretas.</li>
+          </ul>
+        </div>
+        <PlaceholderImage label="Foto: clase de adultos escalando en boulder" ratio="4 / 3" />
+      </div>
+    </div>
+  </section>
+
+  <!-- MATERIAL -->
+  <section class="section">
+    <div class="container-narrow">
+      <span class="eyebrow">Material</span>
+      <h2 style="font-size:clamp(1.4rem,2.6vw,1.9rem); margin-bottom:1rem;">Qué necesitas traer</h2>
+      <p style="color:var(--color-ink-soft);">
+        Ropa deportiva, pies de gato y magnesio. En las clases de adultos también puede ser útil
+        un reloj o el móvil para algunos ejercicios cronometrados.
+      </p>
+    </div>
+  </section>
+
+  <!-- INSCRIPCIÓN -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Inscripción y primera clase</span>
+        <h2>Cómo apuntarte</h2>
+      </div>
+      <div class="grid grid-3">
+        <div class="card-flat">
+          <h3 style="font-size:1rem;">No hay clase de prueba</h3>
+          <p style="color:var(--color-ink-soft); font-size:0.93rem; margin-top:0.4rem;">
+            La inscripción se completa el primer día, directamente en el centro.
+          </p>
+        </div>
+        <div class="card-flat">
+          <h3 style="font-size:1rem;">Llega 5 minutos antes</h3>
+          <p style="color:var(--color-ink-soft); font-size:0.93rem; margin-top:0.4rem;">
+            El primer día se firma en la tablet del centro los documentos de normas y adhesión.
+          </p>
+        </div>
+        <div class="card-flat">
+          <h3 style="font-size:1rem;">Confirmación de plaza</h3>
+          <p style="color:var(--color-ink-soft); font-size:0.93rem; margin-top:0.4rem;">
+            Escríbeme por WhatsApp con tus datos y el horario que prefieres; te confirmo la
+            disponibilidad antes de que vengas.
+          </p>
+        </div>
+      </div>
+      <div class="text-center" style="margin-top:2rem;">
+        <WhatsAppButton message={whatsappMessages.clasesAdultos} label="Escribir para inscribirme" />
+      </div>
+    </div>
+  </section>
+
+  <!-- UBICACIÓN -->
+  <section class="section">
+    <div class="container-narrow text-center">
+      <span class="eyebrow">Ubicación</span>
+      <h2 style="font-size:clamp(1.4rem,2.6vw,1.9rem); margin-bottom:0.75rem;">{location.businessName}</h2>
+      <p style="color:var(--color-ink-soft); margin-bottom:1.25rem;">
+        {location.street}, {location.postalCode} {location.city}
+      </p>
+      <a href={mapsUrl} target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+        Ver en el mapa
+      </a>
+    </div>
+  </section>
+</BaseLayout>

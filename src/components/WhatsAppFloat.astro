@@ -1,0 +1,14 @@
+---
+import WhatsAppIcon from './WhatsAppIcon.astro';
+import { whatsappLink, whatsappMessages } from '../data/config';
+---
+
+<a
+  class="whatsapp-float"
+  href={whatsappLink(whatsappMessages.generico)}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Contactar por WhatsApp"
+>
+  <WhatsAppIcon />
+</a>

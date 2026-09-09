@@ -1,0 +1,192 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import PlaceholderImage from '../components/PlaceholderImage.astro';
+import Icon from '../components/Icon.astro';
+import { whatsappMessages, location } from '../data/config';
+import { entrenamientoOnline } from '../data/precios';
+import { faqItems } from '../data/faq';
+
+const services = [
+  {
+    icon: 'climbing' as const,
+    title: 'Clases presenciales',
+    text: 'Grupos de adultos y de niños en Vuit Climbing Club, con técnica, físico y estrategia en cada sesión.',
+    href: '/clases',
+    cta: whatsappMessages.clasesAdultos,
+  },
+  {
+    icon: 'personal' as const,
+    title: 'Clases particulares',
+    text: 'Sesiones individuales, en pareja o en trío para atención personalizada y horario a medida.',
+    href: '/particulares',
+    cta: whatsappMessages.particulares,
+  },
+  {
+    icon: 'online' as const,
+    title: 'Entrenamiento online',
+    text: 'Planificación personalizada de fuerza y/o escalada con seguimiento en TrainingPeaks, entrenes donde entrenes.',
+    href: '/entrenamiento-online',
+    cta: whatsappMessages.entrenamientoOnline,
+  },
+  {
+    icon: 'nutrition' as const,
+    title: 'Nutrición con INDYA',
+    text: 'Planificación nutricional a través de INDYA, con o sin seguimiento de un nutricionista.',
+    href: '/nutricion',
+    cta: whatsappMessages.nutricion,
+  },
+];
+
+const faqTeaser = faqItems.slice(0, 3);
+---
+
+<BaseLayout
+  title="Clases de escalada y entrenamiento personalizado en Valencia"
+  description="Clases de escalada para adultos y niños en Vuit Climbing Club (Valencia), clases particulares y entrenamiento online de fuerza y escalada con seguimiento en TrainingPeaks."
+  path="/"
+>
+  <section class="hero">
+    <div class="container hero__grid">
+      <div>
+        <span class="eyebrow">Escalada · Fuerza · Entrenamiento online</span>
+        <h1>Entrena escalada y fuerza con un plan pensado para ti</h1>
+        <p class="lead">
+          Clases presenciales de escalada en Valencia y entrenamiento online personalizado de
+          fuerza y escalada, entrenes donde entrenes. Sin plantillas genéricas: cada plan se
+          adapta a tu nivel, tus objetivos y tu disponibilidad.
+        </p>
+        <div class="hero__actions">
+          <WhatsAppButton message={whatsappMessages.generico} label="Escríbeme por WhatsApp" />
+          <a href="/entrenamiento-online" class="btn btn-outline">Ver entrenamiento online</a>
+        </div>
+        <div class="hero__meta">
+          <div>
+            <strong>{location.city}</strong>
+            <span>Clases presenciales</span>
+          </div>
+          <div>
+            <strong>Online</strong>
+            <span>Desde cualquier lugar</span>
+          </div>
+          <div>
+            <strong>TrainingPeaks</strong>
+            <span>Planificación y seguimiento</span>
+          </div>
+        </div>
+      </div>
+      <PlaceholderImage label="Foto: Jonan entrenando o escalando en Vuit Climbing Club" ratio="4 / 5" />
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">¿Qué estás buscando?</span>
+        <h2>Cuatro formas de entrenar, un mismo criterio</h2>
+        <p>
+          Ya vengas buscando tu primera clase de escalada, atención individual o un plan online
+          de fuerza, aquí tienes el punto de partida.
+        </p>
+      </div>
+
+      <div class="grid grid-4">
+        {
+          services.map((service) => (
+            <div class="card stack" style="justify-content: space-between; gap: 1.25rem;">
+              <div class="stack" style="gap: 0.75rem;">
+                <div class="icon-badge"><Icon name={service.icon} /></div>
+                <h3 style="font-size:1.1rem;">{service.title}</h3>
+                <p style="color:var(--color-ink-soft); font-size:0.95rem;">{service.text}</p>
+              </div>
+              <div class="stack" style="gap: 0.6rem;">
+                <a href={service.href} class="btn btn-outline btn-block">Ver detalles</a>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="hero__grid" style="align-items:center;">
+        <PlaceholderImage label="Foto: retrato de Jonan" ratio="1 / 1" maxWidth="360px" />
+        <div>
+          <span class="eyebrow">Sobre mí</span>
+          <h2 style="font-size:clamp(1.6rem,3vw,2.2rem); margin-bottom:1rem;">
+            Entreno a escaladores y personas que quieren ganar fuerza, con seguimiento real
+          </h2>
+          <p style="color:var(--color-ink-soft); margin-bottom:1.5rem; max-width:55ch;">
+            Trabajo tanto en las clases presenciales de Vuit Climbing Club como en planes de
+            entrenamiento online, adaptando cada programación a la persona que tengo delante.
+          </p>
+          <a href="/sobre-mi" class="btn btn-outline">Conóceme mejor</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Entrenamiento online</span>
+        <h2>Fuerza, escalada o ambas, con plan y seguimiento</h2>
+        <p>La programación es personalizada y se organiza y registra en TrainingPeaks.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <h3>{entrenamientoOnline.fuerza.nombre}</h3>
+          <p class="price-card__amount">{entrenamientoOnline.fuerza.precioMes} €<span> /mes</span></p>
+        </div>
+        <div class="card price-card--featured" style="border:1px solid var(--color-accent);">
+          <span class="badge">Fuerza + escalada</span>
+          <h3>{entrenamientoOnline.pack.nombre}</h3>
+          <p class="price-card__amount">{entrenamientoOnline.pack.precioMes} €<span> /mes</span></p>
+        </div>
+        <div class="card">
+          <h3>{entrenamientoOnline.escalada.nombre}</h3>
+          <p class="price-card__amount">{entrenamientoOnline.escalada.precioMes} €<span> /mes</span></p>
+        </div>
+      </div>
+      <div class="text-center" style="margin-top:2rem;">
+        <a href="/entrenamiento-online" class="btn btn-primary">Ver qué incluye cada plan</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Dudas rápidas</span>
+        <h2>Preguntas frecuentes</h2>
+      </div>
+      <div class="grid grid-2" style="gap:1rem;">
+        {
+          faqTeaser.map((item) => (
+            <div class="card-flat">
+              <h3 style="font-size:1rem; margin-bottom:0.4rem;">{item.question}</h3>
+              <p style="color:var(--color-ink-soft); font-size:0.93rem;">{item.answer}</p>
+            </div>
+          ))
+        }
+      </div>
+      <div class="text-center" style="margin-top:2rem;">
+        <a href="/faq" class="btn btn-outline">Ver todas las preguntas</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container-narrow text-center">
+      <h2 style="font-size:clamp(1.6rem,3vw,2.2rem); margin-bottom:1rem;">
+        ¿Empezamos a entrenar?
+      </h2>
+      <p style="color:var(--color-ink-soft); margin-bottom:1.75rem;">
+        Cuéntame qué buscas y te oriento hacia el servicio que mejor encaja contigo.
+      </p>
+      <WhatsAppButton message={whatsappMessages.generico} label="Hablar por WhatsApp" />
+    </div>
+  </section>
+</BaseLayout>

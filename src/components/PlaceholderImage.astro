@@ -1,0 +1,24 @@
+---
+/**
+ * Marcador visual elegante para fotografías pendientes de sustituir.
+ * No pesa nada (solo CSS) y deja claro qué foto va en cada hueco.
+ * Ver README para el listado completo de fotos necesarias.
+ */
+interface Props {
+  label: string;
+  ratio?: string;
+  class?: string;
+  maxWidth?: string;
+}
+const { label, ratio = '4 / 3', class: className, maxWidth } = Astro.props;
+const styleValue = `--ar: ${ratio};${maxWidth ? ` max-width: ${maxWidth};` : ''}`;
+---
+
+<div class:list={['art-placeholder', className]} style={styleValue} role="img" aria-label={label}>
+  <span class="art-placeholder__label">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:inline-block;vertical-align:-2px;margin-right:6px" aria-hidden="true">
+      <path d="M4 8h3l2-2h6l2 2h3a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z" />
+      <circle cx="12" cy="13" r="3.5" />
+    </svg>{label}
+  </span>
+</div>

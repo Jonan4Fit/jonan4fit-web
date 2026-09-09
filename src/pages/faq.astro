@@ -1,0 +1,79 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import { whatsappMessages } from '../data/config';
+import { faqItems, type FaqItem } from '../data/faq';
+
+const categoryLabels: Record<FaqItem['category'], string> = {
+  clases: 'Clases presenciales',
+  particulares: 'Clases particulares',
+  online: 'Entrenamiento online',
+  nutricion: 'Nutrición',
+  general: 'General',
+};
+
+const categories = ['clases', 'particulares', 'online', 'nutricion', 'general'] as const;
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title="Preguntas frecuentes"
+  description="Resolvemos las dudas más habituales sobre clases de escalada, clases particulares, entrenamiento online y nutrición con INDYA."
+  path="/faq"
+  structuredData={structuredData}
+>
+  <section class="hero" style="padding-bottom:1.5rem;">
+    <div class="container-narrow">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h1 style="font-size:clamp(2rem,4.5vw,2.8rem); margin-bottom:1rem;">Resolvemos tus dudas</h1>
+      <p class="lead">
+        Si no encuentras la respuesta que buscas, escríbeme directamente por WhatsApp.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-narrow">
+      {
+        categories.map((cat) => {
+          const items = faqItems.filter((i) => i.category === cat);
+          if (items.length === 0) return null;
+          return (
+            <div class="faq-category">
+              <h2>{categoryLabels[cat]}</h2>
+              <div>
+                {items.map((item) => (
+                  <details class="faq-item">
+                    <summary>{item.question}</summary>
+                    <p>{item.answer}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </section>
+
+  <section class="section section-alt text-center">
+    <div class="container-narrow">
+      <h2 style="font-size:clamp(1.4rem,2.8vw,1.9rem); margin-bottom:1rem;">¿Sigues con dudas?</h2>
+      <WhatsAppButton message={whatsappMessages.contacto} label="Preguntar por WhatsApp" />
+    </div>
+  </section>
+</BaseLayout>

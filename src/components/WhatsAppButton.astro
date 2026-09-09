@@ -1,0 +1,24 @@
+---
+import WhatsAppIcon from './WhatsAppIcon.astro';
+import { whatsappLink } from '../data/config';
+
+interface Props {
+  message: string;
+  label?: string;
+  variant?: 'primary' | 'outline' | 'ghost';
+  class?: string;
+}
+
+const { message, label = 'Escríbenos por WhatsApp', variant = 'primary', class: className } = Astro.props;
+const variantClass = variant === 'primary' ? 'btn-primary' : variant === 'outline' ? 'btn-outline' : 'btn-ghost';
+---
+
+<a
+  class:list={['btn', variantClass, className]}
+  href={whatsappLink(message)}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <WhatsAppIcon />
+  {label}
+</a>

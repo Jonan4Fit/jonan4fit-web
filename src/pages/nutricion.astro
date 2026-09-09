@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import PriceCard from '../components/PriceCard.astro';
+import { whatsappMessages } from '../data/config';
+import { nutricion } from '../data/precios';
+---
+
+<BaseLayout
+  title="Nutrición deportiva con INDYA"
+  description="Nutrición deportiva mediante INDYA, con o sin seguimiento de nutricionista, y packs combinados con entrenamiento online."
+  path="/nutricion"
+>
+  <section class="hero" style="padding-bottom:2rem;">
+    <div class="container-narrow">
+      <span class="eyebrow">Nutrición</span>
+      <h1 style="font-size:clamp(2rem,4.5vw,3rem); margin-bottom:1.1rem;">
+        Nutrición deportiva a través de INDYA
+      </h1>
+      <p class="lead">
+        La colaboración con INDYA permite ofrecer planificación nutricional junto al
+        entrenamiento. Jonan no es nutricionista: la parte nutricional la presta INDYA y sus
+        profesionales cuando la modalidad contratada lo incluye.
+      </p>
+      <div class="hero__actions">
+        <WhatsAppButton message={whatsappMessages.nutricion} label="Consultar sobre INDYA" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Solo nutrición</span>
+        <h2>Con o sin nutricionista</h2>
+      </div>
+      <div class="grid grid-2">
+        <PriceCard
+          title={nutricion.indyaSinNutricionista.nombre}
+          price={nutricion.indyaSinNutricionista.precioMes}
+          features={[
+            'Planificación en la app según tu perfil y objetivo',
+            'Calorías y macronutrientes',
+            'Recetas y cambios inteligentes de recetas',
+            'Lista de la compra',
+            'Reajustes automáticos según entrenamientos, gustos y logística',
+            'Encuesta de cumplimiento y sensaciones, gráficos e informe mensual',
+            'Sin seguimiento individual de un nutricionista',
+          ]}
+          ctaMessage={whatsappMessages.nutricion}
+          ctaLabel="Quiero esta opción"
+        />
+        <PriceCard
+          title={nutricion.indyaConNutricionista.nombre}
+          price={nutricion.indyaConNutricionista.precioMes}
+          featured
+          description="Incluye todo lo anterior, más:"
+          features={[
+            'Contacto mediante chat con nutricionista',
+            'Primera consulta online',
+            'Revisiones mensuales',
+            'Estrategia según tu objetivo',
+            'Apoyo en competición',
+            'Suplementación dentro del ámbito profesional',
+            'Adaptaciones a situaciones personales específicas',
+          ]}
+          ctaMessage={whatsappMessages.nutricion}
+          ctaLabel="Quiero esta opción"
+        />
+      </div>
+      <p class="note" style="margin-top:1.5rem; max-width:70ch;">
+        Puede sincronizarse con servicios compatibles como TrainingPeaks, Strava y otras
+        plataformas de salud. Si existen patologías, estrategias dietéticas concretas o retos
+        deportivos exigentes, se recomienda directamente la modalidad con nutricionista.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Entrenamiento + nutrición</span>
+        <h2>Packs combinados</h2>
+        <p>Entrenamiento individual online combinado con INDYA.</p>
+      </div>
+      <div class="grid grid-2">
+        <PriceCard
+          title={nutricion.entrenamientoIndyaSinNutricionista.nombre}
+          price={nutricion.entrenamientoIndyaSinNutricionista.precioMes}
+          features={[
+            'Entrenamiento personalizado online',
+            'INDYA sin seguimiento de nutricionista',
+          ]}
+          ctaMessage={whatsappMessages.nutricion}
+          ctaLabel="Consultar este pack"
+        />
+        <PriceCard
+          title={nutricion.entrenamientoIndyaConNutricionista.nombre}
+          price={nutricion.entrenamientoIndyaConNutricionista.precioMes}
+          features={[
+            'Entrenamiento personalizado online',
+            'INDYA con seguimiento de nutricionista',
+          ]}
+          ctaMessage={whatsappMessages.nutricion}
+          ctaLabel="Consultar este pack"
+        />
+      </div>
+      <p class="note" style="margin-top:1.5rem; max-width:70ch;">
+        Estos precios corresponden a un servicio de entrenamiento individual combinado con
+        INDYA. Otras combinaciones (por ejemplo, fuerza + escalada + nutrición) no tienen una
+        tarifa publicada: escríbeme por WhatsApp y te confirmo el precio.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container-narrow">
+      <div class="card">
+        <h2 style="font-size:1.2rem; margin-bottom:0.75rem;">Ámbito del servicio</h2>
+        <p style="color:var(--color-ink-soft);">
+          Jonan no actúa como nutricionista ni ofrece diagnóstico o tratamiento nutricional. La
+          planificación nutricional la presta INDYA, y el contacto con un nutricionista
+          colegiado solo está incluido en la modalidad "con nutricionista". No hay permanencia:
+          para cancelar basta con avisar antes de la renovación correspondiente.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-narrow text-center">
+      <h2 style="font-size:clamp(1.5rem,3vw,2rem); margin-bottom:1rem;">¿Tienes dudas sobre INDYA?</h2>
+      <WhatsAppButton message={whatsappMessages.nutricion} label="Preguntar por WhatsApp" />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import { whatsappMessages } from '../data/config';
+---
+
+<BaseLayout
+  title="Página no encontrada"
+  description="La página que buscas no existe."
+  path="/404"
+  noindex
+>
+  <section class="section">
+    <div class="container-narrow text-center">
+      <span class="eyebrow">Error 404</span>
+      <h1 style="font-size:clamp(2rem,4.5vw,2.8rem); margin-bottom:1rem;">
+        No hemos encontrado esta página
+      </h1>
+      <p style="color:var(--color-ink-soft); margin-bottom:2rem;">
+        Puede que el enlace esté roto o que la página se haya movido.
+      </p>
+      <div class="hero__actions" style="justify-content:center;">
+        <a href="/" class="btn btn-primary">Volver al inicio</a>
+        <WhatsAppButton message={whatsappMessages.contacto} label="Escríbeme por WhatsApp" variant="outline" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

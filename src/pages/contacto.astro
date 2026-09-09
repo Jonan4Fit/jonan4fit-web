@@ -1,0 +1,59 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import { whatsappMessages, location, mapsUrl } from '../data/config';
+
+const opciones = [
+  { label: 'Clases de adultos', message: whatsappMessages.clasesAdultos },
+  { label: 'Clases infantiles', message: whatsappMessages.clasesInfantil },
+  { label: 'Clases particulares', message: whatsappMessages.particulares },
+  { label: 'Entrenamiento online', message: whatsappMessages.entrenamientoOnline },
+  { label: 'Nutrición con INDYA', message: whatsappMessages.nutricion },
+  { label: 'Otra consulta', message: whatsappMessages.contacto },
+];
+---
+
+<BaseLayout
+  title="Contacto"
+  description="Contacta por WhatsApp para clases de escalada, clases particulares, entrenamiento online o nutrición con INDYA en Valencia."
+  path="/contacto"
+>
+  <section class="hero" style="padding-bottom:1.5rem;">
+    <div class="container-narrow text-center">
+      <span class="eyebrow">Contacto</span>
+      <h1 style="font-size:clamp(2rem,4.5vw,2.8rem); margin-bottom:1rem;">Hablemos por WhatsApp</h1>
+      <p class="lead mx-auto">
+        La vía más rápida para resolver dudas, confirmar plaza o empezar un plan es WhatsApp.
+        Elige el tema que te interesa y te escribo directamente.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-3">
+        {
+          opciones.map((op) => (
+            <div class="card-flat text-center">
+              <p style="font-weight:650; margin-bottom:1rem;">{op.label}</p>
+              <WhatsAppButton message={op.message} label="Escribir por WhatsApp" class="btn-block" />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container-narrow text-center">
+      <span class="eyebrow">Clases presenciales</span>
+      <h2 style="font-size:clamp(1.4rem,2.8vw,1.9rem); margin-bottom:0.75rem;">{location.businessName}</h2>
+      <p style="color:var(--color-ink-soft); margin-bottom:1.25rem;">
+        {location.street}, {location.postalCode} {location.city}
+      </p>
+      <a href={mapsUrl} target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+        Cómo llegar
+      </a>
+    </div>
+  </section>
+</BaseLayout>
