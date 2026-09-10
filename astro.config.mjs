@@ -8,6 +8,12 @@ import { site } from './src/data/config.ts';
 export default defineConfig({
   site: site.url,
   trailingSlash: 'never',
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      // /amigos es una página de precio especial para enlaces compartidos directamente:
+      // no debe aparecer en el sitemap ni ser descubrible desde fuera del enlace.
+      filter: (page) => !page.endsWith('/amigos'),
+    }),
+  ],
   compressHTML: true,
 });

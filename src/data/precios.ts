@@ -44,6 +44,14 @@ export const particulares = {
 };
 
 export const entrenamientoOnline = {
+  fuerza: { precioMes: 70, nombre: 'Fuerza y movilidad' },
+  escalada: { precioMes: 70, nombre: 'Escalada' },
+  pack: { precioMes: 110, nombre: 'Fuerza + escalada' },
+};
+
+// Precio especial para enlaces compartidos directamente (página /amigos, no indexada).
+// Misma estructura que entrenamientoOnline: cambia aquí si el precio especial varía.
+export const entrenamientoOnlineAmigos = {
   fuerza: { precioMes: 50, nombre: 'Fuerza y movilidad' },
   escalada: { precioMes: 50, nombre: 'Escalada' },
   pack: { precioMes: 80, nombre: 'Fuerza + escalada' },

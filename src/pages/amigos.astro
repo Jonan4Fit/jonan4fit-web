@@ -1,0 +1,42 @@
+---
+/**
+ * Página de precio especial para enlaces compartidos directamente.
+ * No indexada (noindex) y excluida del sitemap (ver astro.config.mjs).
+ * No enlazada desde el menú ni el footer: solo se llega aquí con el enlace directo.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EntrenamientoOnlineBody from '../components/EntrenamientoOnlineBody.astro';
+import { whatsappMessages, site } from '../data/config';
+import { entrenamientoOnlineAmigos } from '../data/precios';
+
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Entrenamiento personalizado online de fuerza y escalada',
+    provider: { '@type': 'Organization', name: site.brandName },
+    areaServed: 'Online',
+    offers: [
+      { '@type': 'Offer', name: 'Fuerza y movilidad', price: entrenamientoOnlineAmigos.fuerza.precioMes, priceCurrency: 'EUR' },
+      { '@type': 'Offer', name: 'Escalada', price: entrenamientoOnlineAmigos.escalada.precioMes, priceCurrency: 'EUR' },
+      { '@type': 'Offer', name: 'Fuerza + escalada', price: entrenamientoOnlineAmigos.pack.precioMes, priceCurrency: 'EUR' },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Entrenamiento online de fuerza y escalada"
+  description="Entrenamiento online personalizado de fuerza, movilidad y escalada, con planificación individual y seguimiento en TrainingPeaks. Entrena donde quieras."
+  path="/amigos"
+  structuredData={structuredData}
+  noindex
+>
+  <EntrenamientoOnlineBody
+    prices={entrenamientoOnlineAmigos}
+    ctaGenerico={whatsappMessages.entrenamientoOnlineAmigos}
+    ctaFuerza={whatsappMessages.entrenamientoFuerzaAmigos}
+    ctaEscalada={whatsappMessages.entrenamientoEscaladaAmigos}
+    ctaPack={whatsappMessages.entrenamientoPackAmigos}
+  />
+</BaseLayout>

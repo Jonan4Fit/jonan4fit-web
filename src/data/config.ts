@@ -41,6 +41,15 @@ export const whatsappMessages = {
     'Hola Jonan, me interesa el entrenamiento online de escalada.',
   entrenamientoPack:
     'Hola Jonan, me interesa el pack de fuerza + escalada.',
+  // Mensajes de la página /amigos (precio especial, enlace compartido directamente).
+  entrenamientoOnlineAmigos:
+    'Hola Jonan, me han pasado tu enlace y me interesa el entrenamiento online al precio especial.',
+  entrenamientoFuerzaAmigos:
+    'Hola Jonan, me interesa el entrenamiento online de fuerza y movilidad al precio especial.',
+  entrenamientoEscaladaAmigos:
+    'Hola Jonan, me interesa el entrenamiento online de escalada al precio especial.',
+  entrenamientoPackAmigos:
+    'Hola Jonan, me interesa el pack de fuerza + escalada al precio especial.',
   nutricion: 'Hola Jonan, me interesa la nutrición con INDYA y me gustaría más información.',
   contacto: 'Hola Jonan, te escribo desde la web para consultarte una cosa.',
 };
