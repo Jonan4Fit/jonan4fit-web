@@ -1,0 +1,39 @@
+---
+/**
+ * Foto real dentro de una caja con proporción fija (sustituye a PlaceholderImage).
+ * Ver README, sección 6, para cómo añadir o cambiar fotos.
+ */
+interface Props {
+  src: string;
+  alt: string;
+  ratio?: string;
+  maxWidth?: string;
+  objectPosition?: string;
+  eager?: boolean;
+  class?: string;
+}
+
+const {
+  src,
+  alt,
+  ratio = '4 / 3',
+  maxWidth,
+  objectPosition,
+  eager = false,
+  class: className,
+} = Astro.props;
+
+const styleValue = `--ar: ${ratio};${maxWidth ? ` max-width: ${maxWidth};` : ''}`;
+const imgStyle = objectPosition ? `object-position: ${objectPosition};` : undefined;
+---
+
+<div class:list={['photo', className]} style={styleValue}>
+  <img
+    src={src}
+    alt={alt}
+    style={imgStyle}
+    loading={eager ? 'eager' : 'lazy'}
+    decoding={eager ? 'sync' : 'async'}
+    fetchpriority={eager ? 'high' : undefined}
+  />
+</div>

@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import PriceCard from '../components/PriceCard.astro';
-import PlaceholderImage from '../components/PlaceholderImage.astro';
+import Photo from '../components/Photo.astro';
 import { whatsappMessages, site } from '../data/config';
 import { entrenamientoOnline } from '../data/precios';
 
@@ -129,7 +129,11 @@ const structuredData = [
             se puede ajustar la planificación.
           </p>
         </div>
-        <PlaceholderImage label="Captura o foto: seguimiento en TrainingPeaks" ratio="4 / 3" />
+        <Photo
+          src="/images/online/jonan-fuerza-gimnasio.jpg"
+          alt="Jonan entrenando fuerza en el gimnasio"
+          ratio="3 / 4"
+        />
       </div>
     </div>
   </section>
