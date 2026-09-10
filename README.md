@@ -96,11 +96,11 @@ Está centralizado en `src/data/config.ts`, al principio del archivo:
 
 ```ts
 export const contact = {
-  whatsappNumber: '34633883356',
+  whatsappNumber: '34611776778',
   ...
 ```
 
-Ya está configurado con tu número real (+34 633 88 33 56). Si en el futuro cambia, sustitúyelo
+Ya está configurado con tu número real (+34 611 77 67 78). Si en el futuro cambia, sustitúyelo
 aquí **en formato internacional, sin espacios ni signos** (código de país + número) y se
 actualizará en todos los botones de WhatsApp de la web a la vez.
 

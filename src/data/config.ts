@@ -17,7 +17,7 @@ export const site = {
 };
 
 export const contact = {
-  whatsappNumber: '34633883356',
+  whatsappNumber: '34611776778',
   whatsappDisplayLabel: 'Escríbenos por WhatsApp',
 };
 
