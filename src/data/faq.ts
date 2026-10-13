@@ -32,7 +32,7 @@ export const faqItems: FaqItem[] = [
     category: 'clases',
     question: '¿Cómo funciona la inscripción?',
     answer:
-      'Se completa el primer día desde la tablet del centro, donde se firman los documentos de normas y adhesión. Antes de confirmar el grupo se piden algunos datos básicos (nombre, si es clase de adultos o infantil, horario preferido y experiencia); esa recogida de datos no confirma por sí sola una plaza, la disponibilidad la confirma Jonan.',
+      'Se completa el primer día desde la tablet del centro, donde se firman los documentos de normas y adhesión. Antes de confirmar el grupo se piden algunos datos básicos (nombre, horario preferido y si eres socio de Vuit); esa recogida de datos no confirma por sí sola una plaza, la disponibilidad la confirma Jonan.',
   },
   {
     category: 'clases',

@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import { whatsappMessages } from '../data/config';
+import { normas, gruposNormas } from '../data/normas';
+---
+
+<BaseLayout
+  title="Normas de las clases"
+  description="Normas de funcionamiento, seguridad y convivencia de las clases de escalada de Jonan4Fit en Vuit Climbing Club, Valencia."
+  path="/normas"
+>
+  <section class="hero" style="padding-bottom:1.5rem;">
+    <div class="container-narrow">
+      <span class="eyebrow">Normas</span>
+      <h1 style="font-size:clamp(2rem,4.5vw,2.8rem); margin-bottom:1rem;">Normas de las clases</h1>
+      <p class="lead">
+        Unas pocas reglas para que las sesiones sean seguras y aprovechables para todo el grupo.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-narrow">
+      {
+        normas.length === 0 ? (
+          <p class="note">
+            Estamos preparando este apartado. En cuanto estén publicadas, encontrarás aquí las
+            normas de las clases.
+          </p>
+        ) : (
+          gruposNormas.map((g) => {
+            const items = normas.filter((n) => n.grupo === g.id);
+            if (items.length === 0) return null;
+            return (
+              <div class="faq-category">
+                <h2>{g.label}</h2>
+                <div class="grid grid-2" style="align-items:start;">
+                  {items.map((n) => (
+                    <div class="card">
+                      <h3 style="font-size:1.05rem; margin-bottom:0.4rem;">{n.titulo}</h3>
+                      <p style="color:var(--color-ink-soft); font-size:0.95rem;">{n.texto}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })
+        )
+      }
+    </div>
+  </section>
+
+  <section class="section section-alt text-center">
+    <div class="container-narrow">
+      <h2 style="font-size:clamp(1.4rem,2.8vw,1.9rem); margin-bottom:1rem;">¿Alguna duda?</h2>
+      <WhatsAppButton message={whatsappMessages.contacto} label="Preguntar por WhatsApp" />
+    </div>
+  </section>
+</BaseLayout>

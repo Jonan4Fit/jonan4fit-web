@@ -1,5 +1,6 @@
 ---
 import { location, mapsUrl, whatsappLink, whatsappMessages, site } from '../data/config';
+import { normas } from '../data/normas';
 
 const year = new Date().getFullYear();
 ---
@@ -23,6 +24,7 @@ const year = new Date().getFullYear();
           <li><a href="/particulares">Clases particulares</a></li>
           <li><a href="/entrenamiento-online">Entrenamiento online</a></li>
           <li><a href="/nutricion">Nutrición con INDYA</a></li>
+          {normas.length > 0 && <li><a href="/normas">Normas de las clases</a></li>}
           <li><a href="/faq">Preguntas frecuentes</a></li>
         </ul>
       </div>

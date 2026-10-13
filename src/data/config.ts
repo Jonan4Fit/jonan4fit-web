@@ -9,7 +9,7 @@ export const site = {
   // Nombre de la persona, usado solo cuando se habla de él (Sobre mí, mensajes de WhatsApp).
   personName: 'Jonan',
   description:
-    'Clases de escalada en Valencia para adultos y niños, clases particulares y entrenamiento online personalizado de fuerza y escalada con seguimiento en TrainingPeaks.',
+    'Clases de escalada en Valencia para adultos, clases particulares y entrenamiento online personalizado de fuerza y escalada con seguimiento en TrainingPeaks.',
   // Actualiza esta URL cuando conectes tu dominio propio (ver README, sección "Dominio propio").
   url: 'https://jonan4fit.pages.dev',
   locale: 'es-ES',
@@ -29,8 +29,6 @@ export const whatsappMessages = {
   generico: 'Hola Jonan, he visto tu web y me gustaría más información.',
   clasesAdultos:
     'Hola Jonan, he visto la información de las clases de adultos y me gustaría informarme.',
-  clasesInfantil:
-    'Hola Jonan, me interesan las clases infantiles y me gustaría más información.',
   particulares:
     'Hola Jonan, me interesan las clases particulares y me gustaría más información.',
   entrenamientoOnline:

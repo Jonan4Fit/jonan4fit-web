@@ -3,16 +3,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
 import Photo from '../components/Photo.astro';
 import { whatsappMessages, location, mapsUrl, site } from '../data/config';
-import { clasesAdultos, clasesInfantiles, formatEuros } from '../data/precios';
+import { clasesAdultos, formatEuros } from '../data/precios';
 import { horarioAdultos } from '../data/horarios';
 
 const structuredData = [
   {
     '@context': 'https://schema.org',
     '@type': 'Course',
-    name: 'Clases de escalada para adultos y niños en Valencia',
+    name: 'Clases de escalada para adultos en Valencia',
     description:
-      'Clases grupales presenciales de escalada impartidas por Jonan, de Jonan4Fit, en Vuit Climbing Club, Valencia, para adultos y para niños.',
+      'Clases grupales presenciales de escalada para adultos impartidas por Jonan, de Jonan4Fit, en Vuit Climbing Club, Valencia.',
     provider: {
       '@type': 'Organization',
       name: site.brandName,
@@ -34,8 +34,8 @@ const structuredData = [
 ---
 
 <BaseLayout
-  title="Clases de escalada en Valencia — adultos y niños"
-  description="Clases de escalada para adultos y clases infantiles en Vuit Climbing Club, Valencia. Metodología, horarios, precios e inscripción."
+  title="Clases de escalada para adultos en Valencia"
+  description="Clases grupales de escalada para adultos en Vuit Climbing Club, Valencia. Metodología, horarios, precios e inscripción."
   path="/clases"
   structuredData={structuredData}
 >
@@ -43,7 +43,7 @@ const structuredData = [
     <div class="container">
       <span class="eyebrow">Clases presenciales</span>
       <h1 style="font-size:clamp(2rem,4.5vw,3rem); max-width:20ch; margin-bottom:1.1rem;">
-        Clases de escalada en Valencia para adultos y niños
+        Clases de escalada para adultos en Valencia
       </h1>
       <p class="lead">
         Las clases se imparten en {location.businessName} y combinan técnica, físico y
@@ -51,12 +51,7 @@ const structuredData = [
         personas que forman el grupo.
       </p>
       <div class="hero__actions">
-        <WhatsAppButton message={whatsappMessages.clasesAdultos} label="Preguntar por clases de adultos" />
-        <WhatsAppButton
-          message={whatsappMessages.clasesInfantil}
-          label="Preguntar por clases infantiles"
-          variant="outline"
-        />
+        <WhatsAppButton message={whatsappMessages.clasesAdultos} label="Preguntar por las clases" />
       </div>
     </div>
   </section>
@@ -116,34 +111,6 @@ const structuredData = [
         </div>
       </div>
       <p class="note" style="margin-top:1rem; max-width:70ch;">{clasesAdultos.nota}</p>
-    </div>
-  </section>
-
-  <!-- INFANTIL -->
-  <section class="section" id="infantil">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Infantil</span>
-        <h2>Clases infantiles</h2>
-        <p>Grupo actualmente disponible, sujeto a plazas y nivel.</p>
-      </div>
-
-      <div class="grid grid-3">
-        {
-          clasesInfantiles.grupos.map((g) => (
-            <div class="card">
-              <h3 style="font-size:1.1rem;">{g.edad}</h3>
-              <p class="price-card__amount" style="margin-block:0.5rem;">
-                {formatEuros(g.precioMes)}<span> /mes</span>
-              </p>
-              <p style="color:var(--color-ink-soft); font-size:0.95rem;">
-                {g.dia}, {g.horario} · {g.duracion}
-              </p>
-            </div>
-          ))
-        }
-      </div>
-      <p class="note" style="margin-top:1rem; max-width:70ch;">{clasesInfantiles.nota}</p>
     </div>
   </section>
 

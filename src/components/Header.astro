@@ -1,6 +1,7 @@
 ---
 import WhatsAppButton from './WhatsAppButton.astro';
 import { whatsappMessages, site } from '../data/config';
+import { normas } from '../data/normas';
 
 const navItems = [
   { href: '/', label: 'Inicio' },
@@ -9,6 +10,8 @@ const navItems = [
   { href: '/entrenamiento-online', label: 'Entrenamiento online' },
   { href: '/nutricion', label: 'Nutrición' },
   { href: '/sobre-mi', label: 'Sobre mí' },
+  // El enlace a Normas aparece solo cuando hay normas publicadas en src/data/normas.ts
+  ...(normas.length > 0 ? [{ href: '/normas', label: 'Normas' }] : []),
   { href: '/faq', label: 'FAQ' },
   { href: '/contacto', label: 'Contacto' },
 ];
@@ -19,7 +22,12 @@ const currentPath = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replac
 <header class="site-header">
   <div class="container site-header__inner">
     <a href="/" class="brand">
-      <span class="brand__mark" aria-hidden="true">J</span>
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="8 16 49 33" fill="none" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 45 L26 20 L35 34" stroke="currentColor" />
+          <path d="M35 34 L43 22 L53 45" stroke="var(--color-accent)" />
+        </svg>
+      </span>
       <span>{site.brandName}</span>
     </a>
 
