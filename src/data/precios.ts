@@ -7,8 +7,8 @@
 export const clasesAdultos = {
   formato: '2 clases por semana de 1 hora y 30 minutos cada una',
   modalidades: [
-    { nombre: 'Socios', precioMes: 55, incluye: 'Mensualidad de socio + clases' },
-    { nombre: 'No socios', precioMes: 40, incluye: 'Solo clases' },
+    { nombre: 'Socios', precioMes: 65, incluye: 'Mensualidad de socio + clases' },
+    { nombre: 'No socios', precioMes: 50, incluye: 'Solo clases' },
   ],
   nota: 'La mensualidad es una tarifa de grupo. El número real de clases depende del calendario y puede haber meses con aproximadamente 6, 7, 8, 9 o 10 sesiones.',
 };
